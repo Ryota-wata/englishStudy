@@ -29,6 +29,9 @@ Route::get('/sentence/quiz', 'App\Http\Controllers\SentenceController@quiz')->na
 Route::get('/sentence/quiz/check', 'App\Http\Controllers\SentenceController@check')->name('sentence.check');
 Route::post('/sentence/quiz/check', 'App\Http\Controllers\SentenceController@check')->name('sentence.check');
 
+Route::get('/word', 'App\Http\Controllers\WordController@index')->name('word.index');
+Route::get('/sentence', 'App\Http\Controllers\SentenceController@index')->name('sentence.index');
+
 
 
 

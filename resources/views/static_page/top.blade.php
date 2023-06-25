@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="center jumbotron"><br>
-    <div class="text-center">
+    <div class="alert alert-primary text-center">
       <h1>英語クイズ作成アプリ</h1>
     </div>
 </div><br>

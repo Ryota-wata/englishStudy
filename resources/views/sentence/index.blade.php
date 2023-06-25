@@ -16,7 +16,19 @@
             </div>
         @endif
 
-        <table class="table mt-3">
+
+        <div>
+            <form action="{{ route('sentence.index') }}" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" value="{{ $keywords }}" class="form-control" placeholder="日本語 or 英語を入力">
+                </div>
+                <input type="submit" value="検索" class="btn btn-info">
+            </form>
+        </div><br>
+        
+        <div class="card">
+         <div class="table-responsive">
+          <table class="table table-hover mt-3 text-nowrap mb-0">
             <thead>
                 <tr>
                     <th>日本語</th>
@@ -26,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($sentences as $sentence)
+                  @foreach ($sentences as $sentence)
                     <tr>
                         <td>{{ $sentence->japanese_sentence }}</td>
                         <td>{{ $sentence->english_sentence }}</td>
@@ -46,15 +58,10 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                  @endforeach
             </tbody>
-        </table>
+          </table>
+         </div>
+        </div>
     </div>
 @endsection
-
-# PHP-FPM FastCGI server
-# network or unix domain socket configuration
-
-upstream php-fpm {
-    server unix:/run/php-fpm/www.sock;
-}

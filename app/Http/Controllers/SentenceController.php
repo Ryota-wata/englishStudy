@@ -14,7 +14,11 @@ class SentenceController extends Controller
         if (Auth::check()) {
             $userId = Auth::id();
             $sentences = Sentence::with('SentenceAnswers')->where('user_id', $userId)->get();
-            return view('sentence.index', ['sentences' => $sentences]);
+            $keywords = request()->input('search');
+            if (!empty($keywords)) {
+                $sentences = Sentence::where('japanese_sentence', 'like', '%' . $keywords . '%')->orWhere('english_sentence', 'like', '%' . $keywords . '%')->get();
+            }
+            return view('sentence.index', compact('sentences', 'keywords'));
         } else {
             return redirect()->route('login')->with('danger', 'ログインしてください');
         }

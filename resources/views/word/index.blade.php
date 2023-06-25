@@ -17,7 +17,17 @@
             </div>
         @endif
 
-        <table class="table mt-3">
+        <div>
+            <form action="{{ route('word.index') }}" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" value="{{ $keywords }}" class="form-control" placeholder="日本語 or 英語を入力">
+                </div>
+                <input type="submit" value="検索" class="btn btn-info">
+            </form>
+        </div><br>
+
+        <div class="card">
+        <table class="table table-hover mt-3">
             <thead>
                 <tr>
                     <th>日本語</th>
@@ -50,5 +60,6 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
     </div>
 @endsection

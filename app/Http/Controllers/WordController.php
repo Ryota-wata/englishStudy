@@ -14,7 +14,11 @@ class WordController extends Controller
         if (Auth::check()) {
             $userId = Auth::id();
             $words = Word::with('wordAnswers')->where('user_id', $userId)->get();
-            return view('word.index', ['words' => $words]);
+            $keywords = request()->input('search');
+            if (!empty($keywords)) {
+                $words = Word::where('japanese_word', 'like', '%' . $keywords . '%')->orWhere('english_word', 'like', '%' . $keywords . '%')->get();
+            }
+            return view('word.index', compact('words', 'keywords'));
         } else {
             return redirect()->route('login')->with('danger', 'ログインしてください');
         }
