@@ -27,7 +27,7 @@
         </div><br>
 
         <div class="card">
-        <table class="table table-hover mt-3">
+        <table class="table table-hover mt-3 mb-0">
             <thead>
                 <tr>
                     <th>日本語</th>
@@ -62,4 +62,10 @@
         </table>
         </div>
     </div>
+@endsection
+
+@section('footer')
+    <footer>
+        <div class="text-center text-muted">© 2023 英語クイズ作成アプリ</div>
+    </footer>
 @endsection

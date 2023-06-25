@@ -16,7 +16,7 @@
             </tr>
         </table><br>
         
-        <p><a href="{{ route('user.edit', Auth::user()->id) }}" class="btn btn-primary">編集</a></p>
+        <p><a href="{{ route('user.edit', Auth::user()->id) }}" class="btn btn-success">編集</a></p>
         <form action="{{ route('user.destroy', Auth::user()->id) }}" method="POST">
             @csrf
             @method('DELETE')
