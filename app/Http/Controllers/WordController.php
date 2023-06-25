@@ -24,6 +24,17 @@ class WordController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $word = Word::find($id);
+        if (Auth::id() !== $word->user_id) {
+            return redirect()->route('word.index')->with('danger', '不正なアクセスです');
+        }
+
+        $wordAnswers = WordAnswer::where('user_id', Auth::id())->where('word_id', $id)->get();
+
+        return view('word.show', compact('word', 'wordAnswers'));
+    }
     public function create()
     {
         return view('word.create');

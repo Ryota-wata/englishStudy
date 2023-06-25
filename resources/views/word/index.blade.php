@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <input type="text" name="search" value="{{ $keywords }}" class="form-control" placeholder="日本語 or 英語を入力">
                 </div>
-                <input type="submit" value="検索" class="btn btn-info">
+                <input type="submit" value="検索" class="btn btn-primary">
             </form>
         </div><br>
 
@@ -49,7 +49,8 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('word.edit', $word->id) }}" class="btn btn-success">編集</a>
+                            <a href="{{ route('word.show', $word->id) }}" class="btn btn-info">詳細</a>　
+                            <a href="{{ route('word.edit', $word->id) }}" class="btn btn-success">編集</a>　
                             <form action="{{ route('word.destroy', $word->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

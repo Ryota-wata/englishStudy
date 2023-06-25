@@ -22,13 +22,13 @@
                 <div class="form-group">
                     <input type="text" name="search" value="{{ $keywords }}" class="form-control" placeholder="日本語 or 英語を入力">
                 </div>
-                <input type="submit" value="検索" class="btn btn-info">
+                <input type="submit" value="検索" class="btn btn-primary">
             </form>
         </div><br>
         
         <div class="card">
          <div class="table-responsive">
-          <table class="table table-hover mt-3 mb-0">
+          <table class="table table-hover text-nowrap mt-3 mb-0">
             <thead>
                 <tr>
                     <th>日本語</th>
@@ -50,7 +50,8 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('sentence.edit', $sentence->id) }}" class="btn btn-success">編集</a>
+                            <a href="{{ route('sentence.show', $sentence->id) }}" class="btn btn-info">詳細</a>　
+                            <a href="{{ route('sentence.edit', $sentence->id) }}" class="btn btn-success">編集</a>　
                             <form action="{{ route('sentence.destroy', $sentence->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

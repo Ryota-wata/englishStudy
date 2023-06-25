@@ -24,6 +24,18 @@ class SentenceController extends Controller
         }
     }
 
+    public function show($id)
+    {
+        $sentence = Sentence::find($id);
+        if (Auth::id() !== $sentence->user_id) {
+            return redirect()->route('sentence.index')->with('danger', '不正なアクセスです');
+        }
+
+        $sentenceAnswers = SentenceAnswer::where('user_id', Auth::id())->where('sentence_id', $id)->get();
+
+        return view('sentence.show', compact('sentence', 'sentenceAnswers'));
+    }
+
     public function create()
     {
         return view('sentence.create');

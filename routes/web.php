@@ -14,13 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\StaticPageController@top');
-
-Route::resource('word', 'App\Http\Controllers\WordController')->except(['show']);
-Route::resource('user', 'App\Http\Controllers\UserController');
-Route::resource('sentence', 'App\Http\Controllers\SentenceController')->except(['show']);
-
-Auth::routes();
-
 Route::get('/word/quiz', 'App\Http\Controllers\WordController@quiz')->name('word.quiz');
 Route::get('/word/quiz/check', 'App\Http\Controllers\WordController@check')->name('word.check');
 Route::post('/word/quiz/check', 'App\Http\Controllers\WordController@check')->name('word.check');
@@ -31,6 +24,13 @@ Route::post('/sentence/quiz/check', 'App\Http\Controllers\SentenceController@che
 
 Route::get('/word', 'App\Http\Controllers\WordController@index')->name('word.index');
 Route::get('/sentence', 'App\Http\Controllers\SentenceController@index')->name('sentence.index');
+
+Route::resource('word', 'App\Http\Controllers\WordController');
+Route::resource('user', 'App\Http\Controllers\UserController');
+Route::resource('sentence', 'App\Http\Controllers\SentenceController');
+
+Auth::routes();
+
 
 
 
