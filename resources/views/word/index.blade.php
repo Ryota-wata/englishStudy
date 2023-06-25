@@ -27,7 +27,8 @@
         </div><br>
 
         <div class="card">
-        <table class="table table-hover mt-3 mb-0">
+        <div class="table-responsive">
+        <table class="table table-hover text-nowrap mt-3 mb-0">
             <thead>
                 <tr>
                     <th>日本語</th>
@@ -61,6 +62,7 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
         </div>
     </div>
 @endsection
