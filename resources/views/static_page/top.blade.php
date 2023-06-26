@@ -9,15 +9,21 @@
         <h1>英語クイズ作成アプリ</h1>
         <p class="lead">英語が話せるようになるには、話したい単語やフレーズを覚えることが大切です。<br>このアプリでは、覚えたい英単語や文を登録して、クイズ形式で覚えることができます。<br>瞬時に単語やフレーズが出てくるまで練習して英語脳を作りましょう！</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <a href="{{ route('register') }}" class="btn btn-success btn-lg px-4 gap-3">新規登録</a>
-            <a href="{{ route('login') }}" class="btn btn-primary btn-lg px-4">ログイン</a>
+            @if (Route::has('login'))
+                @auth
+
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-lg px-4 gap-3">ログイン</a>
+                    <a href="{{ route('register') }}" class="btn btn-success btn-lg px-4 gap-3">新規登録</a>
+                @endauth
+            @endif
         </div>
       </div>
       <!-- 列の例 -->
       <div class="row">
         <div class="col-lg-4">
-          <h2 class="alert alert-info">覚えたい単語・フレーズを登録</h2>
-            <p>覚えたい単語やフレーズの日本語訳と英訳を登録し、一覧で見ることができます。</p><br>
+          <h2 class="alert alert-info">覚えたい単語・文章を登録</h2>
+            <p>覚えたい単語や文の日本語訳と英訳を登録し、一覧で見ることができます。</p><br>
         </div>
         <div class="col-lg-4">
           <h2 class="alert alert-danger">Myクイズ</h2>
