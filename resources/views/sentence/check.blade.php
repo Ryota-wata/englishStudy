@@ -3,16 +3,16 @@
 @section('content')
     <div class="container">
       @if ($isCorrect)
-        <h3>正解です！</h3>
+        <h3 class="alert alert-primary text-center">正解です！！！</h3>
       @else
-        <h3>不正解です。</h3>
+        <h3 class="alert alert-danger text-center">不正解です。。。</h3>
       @endif<br>
 
       <h4>問題：{{ $japaneseSentence }}</h4><br>
       <h4>回答：{{ $answer }}</h4><br>
       <h4>正解：{{ $correctAnswer }}</h4><br>
 
-      <a href="{{ route('sentence.quiz') }}" class="btn btn-primary">次の問題へ進む</a>　
+      <a href="{{ route('sentence.quiz') }}" class="btn btn-primary">次の問題へ進む</a><br><br>
       <a href="{{ route('sentence.index') }}" class="btn btn-secondary">一覧へ戻る</a>
     </div>
 @endsection

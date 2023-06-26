@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+<div class="bg-info bg-opacity-25">
+    <div class="container"><br>
       <div class="text-center">
-        <h1>単語・文章を編集</h1>
+        <h1>単語を編集</h1>
       </div><br>
 
-      <a href="https://www.deepl.com/ja/translator" class="btn btn-info" target="_blank">DeepLを使用する</a><br><br>
+      <a href="https://www.deepl.com/ja/translator" class="btn btn-warning" target="_blank">DeepLを使用する</a><br><br>
 
       @if ($errors->any())
         <div class="alert alert-danger">
@@ -32,7 +33,8 @@
             <button type="submit" class="btn btn-primary">更新</button><br><br>
             <a href="{{ route('word.index') }}" class="btn btn-secondary">戻る</a>
         </form>
-    </div>
+    </div><br>
+</div>
 @endsection
         
 @section('footer')

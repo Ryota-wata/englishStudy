@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+<div class="bg-danger bg-opacity-25">
+    <div class="container"><br>
         <div class="text-center">
             <h1>英文クイズ</h1><br><br>
         </div>
@@ -25,7 +26,8 @@
         @else
             <p>クイズの準備ができていません。</p>
         @endif
-    </div>
+    </div><br>
+</div>
 @endsection
 
 @section('footer')

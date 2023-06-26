@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="bg-info bg-opacity-25">
     <div class="center jumbotron"><br>
         <div class="text-center">
-            <h1>My英単語一覧</h1>
+            <h1 class="text-center">My英単語一覧</h1>
         </div>
     </div><br><br>
     <div class="container">
@@ -50,12 +51,12 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('word.show', $word->id) }}" class="btn btn-info">詳細</a>　
-                            <a href="{{ route('word.edit', $word->id) }}" class="btn btn-success">編集</a>　
+                            <a href="{{ route('word.show', $word->id) }}" class="btn btn-outline-info">詳細</a>　
+                            <a href="{{ route('word.edit', $word->id) }}" class="btn btn-outline-success">編集</a>　
                             <form action="{{ route('word.destroy', $word->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('削除してもよろしいですか？')">削除</button>
+                                <button type="submit" class="btn btn-outline-danger" onclick="return confirm('削除してもよろしいですか？')">削除</button>
                             </form>
                         </td>
                     </tr>
@@ -63,8 +64,9 @@
             </tbody>
         </table>
         </div>
-        </div>
+        </div><br><br>
     </div>
+</div>
 @endsection
 
 @section('footer')

@@ -20,7 +20,7 @@
         <form action="{{ route('user.destroy', Auth::user()->id) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？')">削除</button>
+            <button type="submit" class="btn btn-danger" onclick="return confirm('本当に削除しますか？')">退会</button>
         </form><br>
         <p><a href="{{ route('word.index') }}" class="btn btn-secondary">My単語一覧へ戻る</a></p>
 
