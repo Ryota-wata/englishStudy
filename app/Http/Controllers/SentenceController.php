@@ -44,11 +44,14 @@ class SentenceController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'japanese_sentence' => 'required',
-            'english_sentence' => 'required',
+            'english_sentence' => ['required', 'regex:/^[A-Za-z]+$/'],
         ];
 
-        $this->validate($request, $rules);
+        $messages = [
+            'english_sentence.regex' => '「英語」はアルファベットのみ入力してください。',
+        ];
+
+        $this->validate($request, $rules, $messages);
 
         $userId = Auth::id();
         $sentence = new sentence();
@@ -72,11 +75,14 @@ class SentenceController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'japanese_sentence' => 'required',
-            'english_sentence' => 'required',
+            'english_sentence' => ['required', 'regex:/^[A-Za-z]+$/'],
         ];
 
-        $this->validate($request, $rules);
+        $messages = [
+            'english_sentence.regex' => '「英語」はアルファベットのみ入力してください。',
+        ];
+
+        $this->validate($request, $rules, $messages);
 
         $sentence = Sentence::find($id);
         if (Auth::id() !== $sentence->user_id) {
@@ -120,10 +126,6 @@ class SentenceController extends Controller
         $sentence = Sentence::where('japanese_sentence', $japaneseSentence)
                 ->where('user_id', auth()->user()->id)
                 ->first();
-
-        if (!$sentence) {
-        abort(403); // ユーザーが所有していない単語へのアクセスは拒否する
-        }
 
         $correctAnswer = $sentence->english_sentence;
         $isCorrect = $correctAnswer == $answer;

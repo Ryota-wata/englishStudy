@@ -43,11 +43,16 @@ class WordController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'japanese_word' => 'required',
-            'english_word' => 'required',
+            'japanese_word' => ['required', 'regex:/^[\p{Hiragana}\p{Katakana}\p{Han}ー]+$/u'],
+            'english_word' => ['required', 'regex:/^[A-Za-z]+$/'],
         ];
 
-        $this->validate($request, $rules);
+        $messages = [
+            'japanese_word.regex' => '「日本語」はひらがな、カタカナ、漢字のみ入力してください。',
+            'english_word.regex' => '「英語」はアルファベットのみ入力してください。',
+        ];
+
+        $this->validate($request, $rules, $messages);
 
         $userId = Auth::id();
         $word = new Word();
@@ -71,11 +76,16 @@ class WordController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'japanese_word' => 'required',
-            'english_word' => 'required',
+            'japanese_word' => ['required', 'regex:/^[\p{Hiragana}\p{Katakana}\p{Han}ー]+$/u'],
+            'english_word' => ['required', 'regex:/^[A-Za-z]+$/'],
         ];
 
-        $this->validate($request, $rules);
+        $messages = [
+            'japanese_word.regex' => '「日本語」はひらがな、カタカナ、漢字のみ入力してください。',
+            'english_word.regex' => '「英語」はアルファベットのみ入力してください。',
+        ];
+
+        $this->validate($request, $rules, $messages);
 
         $word = Word::find($id);
         if (Auth::id() !== $word->user_id) {
@@ -120,9 +130,6 @@ class WordController extends Controller
                 ->where('user_id', auth()->user()->id)
                 ->first();
 
-        if (!$word) {
-        abort(403); // ユーザーが所有していない単語へのアクセスは拒否する
-        }
 
         $correctAnswer = $word->english_word;
         $isCorrect = $correctAnswer === $answer;
